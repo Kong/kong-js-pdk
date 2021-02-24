@@ -1,0 +1,21 @@
+{
+  "name": "kong-pdk",
+  "version": "1.0.0",
+  "description": "Kong PDK for Javascript and Plugin Server",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/kong-js-pluginserver",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "fffonion",
+  "license": "BSD",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  },
+  "dependencies": {
+    "commander": "^7.1.0",
+    "msgpack": "^1.0.3",
+    "node-color-log": "^5.2.0"
+  }
+}
