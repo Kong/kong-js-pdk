@@ -5,7 +5,7 @@ Plugin server and PDK (Plugin Development Kit) for Javascript language support i
 Requires Kong >= 2.3.0.
 
 **This project is currently work in progress, please be noted that API interfaces
-are influx and subject to change.**
+are in flux and subject to change.**
 
 ## Install dependencies
 
