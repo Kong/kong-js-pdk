@@ -17,8 +17,15 @@ class Plugin {
 
     let message = this.config.message || "hello"
 
-    await kong.response.set_header("x-hello-from-javascript", "Javascript says " + message + " to " + host)
-    await kong.response.set_header("x-javascript-pid", process.pid)
+    // the following can be "parallel"ed
+    await Promise.all([
+      kong.response.set_header("x-hello-from-javascript", "Javascript says " + message + " to " + host),
+      kong.response.set_header("x-javascript-pid", process.pid),
+    ])
+  }
+
+  async log(kong) {
+    await kong.log.info("log from nodejs " + process.version + " @" + new Date().toISOString())
   }
 }
 
