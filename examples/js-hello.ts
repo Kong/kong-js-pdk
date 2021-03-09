@@ -1,15 +1,18 @@
 'use strict';
 
 let proc = require("process")
+import kong from "../modules/kong"
 
 // This is an example plugin that add a header to the response
 
 class KongPlugin {
+  config;
+
   constructor(config) {
     this.config = config
   }
 
-  async access(kong) {
+  async access(kong: kong) {
     let [host, err] = await kong.request.getHeader("host")
     if (err) {
       return await kong.log.err(err)

@@ -1,0 +1,10 @@
+// AUTO GENERATED BASED ON Kong 2.3.x, DO NOT EDIT
+// Original source path: kong/pdk/ctx.lua
+
+import type shared from "./ctx/shared"
+
+export default interface ctx {
+
+    shared: shared;
+
+}

@@ -2,6 +2,11 @@
 
 const bridgeHandler = {
   get(target, name) {
+    // camelCase to underscore_case
+    name = name.replace(/[a-z][A-Z]/g,
+      function (s) {
+        return s.substring(0, 1) + "_" + s.substring(1).toLowerCase()
+      })
     return newBridgeCall(target.prefix + "." + name, target.call)
   }
 }
@@ -12,7 +17,7 @@ function newBridgeCall(prefix, call) {
   }
   bridgeCall.prefix = prefix
   bridgeCall.call = call
-  
+
   return new Proxy(bridgeCall, bridgeHandler);
 }
 

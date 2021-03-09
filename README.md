@@ -48,5 +48,4 @@ each PDK function must be called with `await`.
 
 - Better API design for user land (without async/await?)
 - Dedicated server per plugin
-- Generate typescript interface file
 - Rewrite with typescript
