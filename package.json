@@ -10,13 +10,12 @@
   "author": "fffonion",
   "license": "BSD",
   "devDependencies": {
-    "@types/node": "^14.14.32",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0"
+    "@types/node": "^14.14.32"
   },
   "dependencies": {
     "commander": "^7.1.0",
     "msgpack": "^1.0.3",
-    "node-color-log": "^5.2.0"
+    "node-color-log": "^5.2.0",
+    "ts-node": "^9.1.1"
   }
 }

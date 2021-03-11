@@ -13,9 +13,9 @@ class KongPlugin {
   }
 
   async access(kong: kong) {
-    let [host, err] = await kong.request.getHeader("host")
-    if (err) {
-      return await kong.log.err(err)
+    let host = await kong.request.getHeader("host")
+    if (host === undefined) {
+      return await kong.log.err("unable to get header for request")
     }
 
     let message = this.config.message || "hello"

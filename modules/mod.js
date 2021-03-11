@@ -1,5 +1,6 @@
 'use strict';
 
+require('ts-node').register();
 const fs = require("fs")
 
 const phases = ["certificate", "rewrite", "log", "access", "preread"]
@@ -11,11 +12,11 @@ class Module {
 
     let mod
     if (path !== undefined) {
-      let f = /(.+)\.[^.]+$/.exec(path)
+      let f = /(.+)\.([^.]+)$/.exec(path)
       if (f[1] === undefined) {
         throw new Error(path + " doesn't contain a split")
       }
-      mod = require(f[1])
+      mod = require(f[2].toLowerCase() == "js" ? f[1]: path)
       this.mod = mod
       this.mtime = fs.statSync(path).mtime.getTime() / 1000
     } else if (module !== undefined) {
@@ -26,6 +27,7 @@ class Module {
       throw new Error("either path or module needs to be passed in")
     }
 
+    this.path = path
     this.cls = mod.Plugin
 
     this.phases = []

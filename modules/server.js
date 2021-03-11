@@ -43,18 +43,29 @@ class Server {
     }
 
     fs.readdirSync(this.pluginDir).forEach(file => {
-      let f = /(.+)\.([^.]+)$/.exec(file)
-      if (f[1] === undefined || f[2] !== 'js') {
+      let p = path.join(this.pluginDir, file)
+      if (fs.statSync(p).isDirectory()) {
         return
       }
-      let name = f[1]
-      let p = path.join(this.pluginDir, file)
+      let f = /(.+)\.([^.]+)$/.exec(file)
+      let name = f && f[1]
+      let ext = f && f[2]
+      if (!f || name === undefined || (ext !== 'js' && ext != 'ts')) {
+        return
+      }
+
+      if (this.plugins[name]) {
+        this.logger.warn("plugin \"" + name + "\" is already imported from " + this.plugins[name].path +
+                    ", trying to reimport from " + p)
+        return
+      }
+
       try {
         let m = new Module(name, p)
         this.logger.debug("loaded plugin \"" + name + "\" from " + p)
         this.plugins[name] = m
       } catch (ex) {
-        this.logger.warn("error loading plugin \"" + name + "\": " + ex.stack)
+        this.logger.warn("error loading plugin \"" + name + "\" from " + p + ": " + ex.stack)
       }
     });
   }
