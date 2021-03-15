@@ -1,7 +1,7 @@
 // AUTO GENERATED BASED ON Kong 2.3.x, DO NOT EDIT
 // Original source path: kong/pdk/client.lua
 
-import type tls from "./client/tls"
+import type tls from "./tls"
 
 export default interface client {
 

@@ -1,7 +1,7 @@
 // AUTO GENERATED BASED ON Kong 2.3.x, DO NOT EDIT
 // Original source path: kong/pdk/nginx.lua
 
-import type shared from "./nginx/shared"
+import type shared from "./shared"
 
 export default interface nginx {
 

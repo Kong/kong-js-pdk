@@ -7,9 +7,9 @@ let path = require('path')
 const msgpack = require("msgpack")
 const logger = require('node-color-log')
 
-let cli = require(path.join(__dirname, '..', 'modules', 'cli'))
-let Server = require(path.join(__dirname, '..', 'modules', 'server'))
-let Listener = require(path.join(__dirname, '..', 'modules', 'listener'))
+let cli = require('kong-pdk/cli')
+let Server = require('kong-pdk/server')
+let Listener = require('kong-pdk/listener')
 
 let opts = cli.parse()
 

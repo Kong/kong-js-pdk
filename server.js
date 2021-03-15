@@ -5,9 +5,9 @@ const path = require('path')
 const process = require('process');
 const {
   Module
-} = require(path.join(__dirname, 'mod'))
+} = require(path.join(__dirname, 'lib', 'mod'))
 
-const PipePair = require(path.join(__dirname, 'pipe'))
+const PipePair = require(path.join(__dirname, 'lib', 'pipe'))
 const PDK = require(path.join(__dirname, 'pdk'))
 
 const entities = ('Service', 'Consumer', 'Route', 'Plugin', 'Credential', 'MemoryStats')

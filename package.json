@@ -1,14 +1,14 @@
 {
   "name": "kong-pdk",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Kong PDK for Javascript and Plugin Server",
   "main": "app.js",
   "scripts": {
     "start": "node ./bin/kong-js-pluginserver -d $(pwd)/examples",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "fffonion",
-  "license": "BSD",
+  "author": "Kong",
+  "license": "BSD-2-Clause",
   "devDependencies": {
     "@types/node": "^14.14.32"
   },
@@ -17,5 +17,18 @@
     "msgpack": "^1.0.3",
     "node-color-log": "^5.2.0",
     "ts-node": "^9.1.1"
-  }
+  },
+  "directories": {
+    "example": "examples",
+    "lib": "lib",
+    "bin": "bin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kong/kong-js-pdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kong/kong-js-pdk/issues"
+  },
+  "homepage": "https://github.com/Kong/kong-js-pdk#readme"
 }

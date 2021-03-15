@@ -1,7 +1,7 @@
 'use strict';
 
 let proc = require("process")
-import kong from "../modules/kong"
+import kong from "kong-pdk/kong"
 
 // This is an example plugin that add a header to the response
 

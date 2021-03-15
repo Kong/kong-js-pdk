@@ -1,16 +1,13 @@
 // AUTO GENERATED BASED ON Kong 2.3.x, DO NOT EDIT
 // Original source path: kong/pdk/service.lua
 
-import type request from "./service/request"
-import type response from "./service/response"
-import type setTlsCertKey from "./service/setTlsCertKey"
+import type request from "./request"
+import type response from "./response"
 
 export default interface service {
 
     request: request;
     response: response;
-    setTlsCertKey: setTlsCertKey;
-
     /**
     * kong.service.set_target("service.local", 443)
     * kong.service.set_target("192.168.130.1", 80)
