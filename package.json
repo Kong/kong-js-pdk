@@ -31,7 +31,7 @@
     "url": "https://github.com/Kong/kong-js-pdk/issues"
   },
   "bin": {
-		"kong-js-pluginserver": "./bin/kong-js-pluginserver",
-	},
+    "kong-js-pluginserver": "./bin/kong-js-pluginserver"
+  },
   "homepage": "https://github.com/Kong/kong-js-pdk#readme"
 }
