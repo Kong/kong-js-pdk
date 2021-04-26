@@ -1,5 +1,12 @@
 'use strict';
 
+class PDKError extends Error {
+  constructor(message) {
+    super(message)
+    this.name = "PDKError"
+  }
+}
+
 const bridgeHandler = {
   get(target, name) {
     // camelCase to underscore_case
@@ -27,7 +34,11 @@ function rpcCall(rpcPipe) {
       "Method": m,
       "Args": args,
     })
-    return await rpcPipe.get()
+    let [ret, err] = await rpcPipe.get()
+    if (err !== undefined) {
+      throw new PDKError("PDK method " + m + " failed: " + err)
+    }
+    return ret
   }
 }
 

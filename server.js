@@ -222,7 +222,13 @@ class Server {
     // https://snyk.io/blog/nodejs-how-even-quick-async-functions-can-block-the-event-loop-starve-io/
     setImmediate(() => {
       new Promise(async () => {
-        await ins.executePhase(phase, new PDK(childCh).kong)
+        try {
+          await ins.executePhase(phase, new PDK(childCh).kong)
+        } catch(ex){
+          let err = "unhandled exception in " + ins.getName() + "." + phase +
+                    " on instance #" + iid + ": " + ex
+          this.logger.warn(err)
+        }
         childCh.put(MSG_RET)
       })
     })
