@@ -22,6 +22,13 @@ let write_error = function (client, msgid, error) {
   ]))
 }
 
+let errToString = function(err) {
+  if (err && err.name === "PluginServerError") {
+    return err.message
+  }
+  return err.toString()
+}
+
 
 class Listener {
   constructor(pluginServer, prefix) {
@@ -50,7 +57,7 @@ class Listener {
         if (this.ps[cmd] === undefined) {
           let err = "method \"" + cmd + "\" not implemented"
           this.logger.error("rpc: #" + msgid + " " + err)
-          write_error(client, msgid, err)
+          write_error(client, msgid, errToString(err))
           return
         }
 
@@ -59,14 +66,14 @@ class Listener {
           promise = this.ps[cmd](...args)
         } catch (ex) {
           this.logger.error(ex.stack)
-          write_error(client, msgid, ex.toString())
+          write_error(client, msgid, errToString(ex))
           return
         }
 
         if (! promise instanceof Promise) {
           let err = cmd + " should return a Promise object, got " + typeof(promise)
           this.logger.error("rpc: #" + msgid + " " + err)
-          write_error(client, msgid, err)
+          write_error(client, msgid, errToString(err))
           return
         }
 
@@ -76,7 +83,7 @@ class Listener {
           })
           .catch((err) => {
             this.logger.error("rpc: #" + msgid + " " + err)
-            write_error(client, msgid, err.toString())
+            write_error(client, msgid, errToString(err))
           })
         // .finally(function() {
         //   this.logger.debug("rpc: #" + msgid + " method: " + method + " finished")

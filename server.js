@@ -174,7 +174,8 @@ class Server {
   // RPC method
   async InstanceStatus(iid) {
     if (iid === undefined || this.instances[iid] == undefined) {
-      return Promise.reject(new PluginServerError("instance #" + iid + " not found"))
+      // Note: Kong expect the error to start with "no plugin instance"
+      return Promise.reject(new PluginServerError("no plugin instance #" + iid))
     }
 
     let ins = this.instances[iid]
@@ -189,7 +190,8 @@ class Server {
   // RPC method
   async CloseInstance(iid) {
     if (iid === undefined || this.instances[iid] == undefined) {
-      return Promise.reject(new PluginServerError("instance #" + iid + " not found"))
+      // Note: Kong expect the error to start with "no plugin instance"
+      return Promise.reject(new PluginServerError("no plugin instance #" + iid))
     }
 
     let ins = this.instances[iid]
@@ -207,7 +209,8 @@ class Server {
   async HandleEvent(event) {
     let iid = event.InstanceId
     if (iid == undefined || this.instances[iid] === undefined) {
-      return Promise.reject(new PluginServerError("instance id " + iid + " not found"))
+      // Note: Kong expect the error to start with "no plugin instance"
+      return Promise.reject(new PluginServerError("no plugin instance #" + iid))
     }
 
     let ins = this.instances[iid]
