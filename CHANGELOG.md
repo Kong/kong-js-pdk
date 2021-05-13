@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="0.3.1"></a>
+## [0.3.1] - 2021-05-13
+### fix
+- use standarlized error for instance not found exception [32960ff](https://github.com/fffonion/kong-pdk/commit/32960ff1015f2cc85d2ad147d4fc31a1ba543b7d)
+
+
 <a name="0.3.0"></a>
 ## [0.3.0] - 2021-05-07
 ### fix
@@ -16,5 +22,6 @@
 - support write plugin in typescript [f63bb91](https://github.com/fffonion/kong-pdk/commit/f63bb9182cc422f9a80c89abc59f6725dc6b426c)
 
 
-[Unreleased]: https://github.com/fffonion/kong-pdk/compare/0.3.0...HEAD
+[Unreleased]: https://github.com/fffonion/kong-pdk/compare/0.3.1...HEAD
+[0.3.1]: https://github.com/fffonion/kong-pdk/compare/0.3.0...0.3.1
 [0.3.0]: https://github.com/fffonion/kong-pdk/compare/0.1.0...0.3.0
