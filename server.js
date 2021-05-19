@@ -50,7 +50,7 @@ class Server {
       let f = /(.+)\.([^.]+)$/.exec(file)
       let name = f && f[1]
       let ext = f && f[2]
-      if (!f || name === undefined || (ext !== 'js' && ext != 'ts')) {
+      if (!f || name === undefined || (ext !== 'js' && ext != 'ts') || name.endsWith(".test")) {
         return
       }
 
