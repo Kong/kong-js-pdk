@@ -2,6 +2,18 @@
 ## [Unreleased]
 
 
+<a name="0.3.3"></a>
+## [0.3.3] - 2021-05-19
+### fix
+- reorganize dependencies ([#8](https://github.com/fffonion/kong-pdk/issues/8)) [167e56c](https://github.com/fffonion/kong-pdk/commit/167e56c2b1de07efd345bfddafff8ae7201e7a9b)
+
+
+<a name="0.3.2"></a>
+## [0.3.2] - 2021-05-19
+### feat
+- add tooling to test plugin code ([#7](https://github.com/fffonion/kong-pdk/issues/7)) [82d01a6](https://github.com/fffonion/kong-pdk/commit/82d01a68885c5b049dc72aaf0a969cc476bbb38d)
+
+
 <a name="0.3.1"></a>
 ## [0.3.1] - 2021-05-13
 ### fix
@@ -22,6 +34,8 @@
 - support write plugin in typescript [f63bb91](https://github.com/fffonion/kong-pdk/commit/f63bb9182cc422f9a80c89abc59f6725dc6b426c)
 
 
-[Unreleased]: https://github.com/fffonion/kong-pdk/compare/0.3.1...HEAD
+[Unreleased]: https://github.com/fffonion/kong-pdk/compare/0.3.3...HEAD
+[0.3.3]: https://github.com/fffonion/kong-pdk/compare/0.3.2...0.3.3
+[0.3.2]: https://github.com/fffonion/kong-pdk/compare/0.3.1...0.3.2
 [0.3.1]: https://github.com/fffonion/kong-pdk/compare/0.3.0...0.3.1
 [0.3.0]: https://github.com/fffonion/kong-pdk/compare/0.1.0...0.3.0
