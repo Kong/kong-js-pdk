@@ -2,6 +2,13 @@
 ## [Unreleased]
 
 
+<a name="0.3.4"></a>
+## [0.3.4] - 2021-06-15
+### fix
+- server to generate correct Step functions ([#11](https://github.com/fffonion/kong-pdk/issues/11)) [46208f5](https://github.com/fffonion/kong-pdk/commit/46208f5c5c3968a82bddfd185b47dc8b34d8cb92)
+- remove kong.table TS definitions ([#12](https://github.com/fffonion/kong-pdk/issues/12)) [128bc58](https://github.com/fffonion/kong-pdk/commit/128bc5850d9cdf4f51124623d394093914326f3e)
+
+
 <a name="0.3.3"></a>
 ## [0.3.3] - 2021-05-19
 ### fix
@@ -34,7 +41,8 @@
 - support write plugin in typescript [f63bb91](https://github.com/fffonion/kong-pdk/commit/f63bb9182cc422f9a80c89abc59f6725dc6b426c)
 
 
-[Unreleased]: https://github.com/fffonion/kong-pdk/compare/0.3.3...HEAD
+[Unreleased]: https://github.com/fffonion/kong-pdk/compare/0.3.4...HEAD
+[0.3.4]: https://github.com/fffonion/kong-pdk/compare/0.3.3...0.3.4
 [0.3.3]: https://github.com/fffonion/kong-pdk/compare/0.3.2...0.3.3
 [0.3.2]: https://github.com/fffonion/kong-pdk/compare/0.3.1...0.3.2
 [0.3.1]: https://github.com/fffonion/kong-pdk/compare/0.3.0...0.3.1
