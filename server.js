@@ -10,7 +10,7 @@ const {
 const PipePair = require(path.join(__dirname, 'lib', 'pipe'))
 const PDK = require(path.join(__dirname, 'pdk'))
 
-const entities = ('Service', 'Consumer', 'Route', 'Plugin', 'Credential', 'MemoryStats')
+const entities = ['Service', 'Consumer', 'Route', 'Plugin', 'Credential', 'MemoryStats']
 const MSG_RET = 'ret'
 
 class PluginServerError extends Error {
