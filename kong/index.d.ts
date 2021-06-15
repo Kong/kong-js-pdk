@@ -12,7 +12,6 @@ import type request from "./request"
 import type response from "./response"
 import type router from "./router"
 import type service from "./service"
-import type table from "./table"
 
 export default interface kong {
 
@@ -27,6 +26,5 @@ export default interface kong {
     response: response;
     router: router;
     service: service;
-    table: table;
 
 }
