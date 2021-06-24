@@ -2,6 +2,9 @@
 ## [Unreleased]
 
 
+<a name="0.3.5"></a>
+## [0.3.5] - 2021-06-24
+
 <a name="0.3.4"></a>
 ## [0.3.4] - 2021-06-15
 ### fix
@@ -41,7 +44,8 @@
 - support write plugin in typescript [f63bb91](https://github.com/fffonion/kong-pdk/commit/f63bb9182cc422f9a80c89abc59f6725dc6b426c)
 
 
-[Unreleased]: https://github.com/fffonion/kong-pdk/compare/0.3.4...HEAD
+[Unreleased]: https://github.com/fffonion/kong-pdk/compare/0.3.5...HEAD
+[0.3.5]: https://github.com/fffonion/kong-pdk/compare/0.3.4...0.3.5
 [0.3.4]: https://github.com/fffonion/kong-pdk/compare/0.3.3...0.3.4
 [0.3.3]: https://github.com/fffonion/kong-pdk/compare/0.3.2...0.3.3
 [0.3.2]: https://github.com/fffonion/kong-pdk/compare/0.3.1...0.3.2
