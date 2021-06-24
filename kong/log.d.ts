@@ -1,18 +1,9 @@
-// AUTO GENERATED BASED ON Kong 2.3.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 2.4.x, DO NOT EDIT
 // Original source path: kong/pdk/log.lua
 
 
 export default interface log {
 
-
-    /**
-    * kong.log.warn("something require attention")
-    * kong.log.err("something failed: ", err)
-    * kong.log.alert("something requires immediate action")
-    * @param ...varargs all params will be concatenated and stringified before being sent to the log
-    * @returns throws an error on invalid inputs.
-    */
-    LEVEL(...varargs: any): Promise<null>;
 
     /**
     * kong.log.warn("something require attention")
@@ -58,13 +49,6 @@ export default interface log {
     * @returns throws an error on invalid inputs.
     */
     info(...varargs: any): Promise<null>;
-
-    /**
-    * kong.log.inspect("some value", a_variable)
-    * @param ...varargs Parameters will be concatenated with spaces between them and
-    rendered as described
-    */
-    inspect(...varargs: any): Promise<null>;
 
     /**
     * kong.log.warn("something require attention")

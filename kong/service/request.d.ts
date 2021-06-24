@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 2.3.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 2.4.x, DO NOT EDIT
 // Original source path: kong/pdk/service/request.lua
 
 
@@ -108,7 +108,7 @@ export default interface request {
 
     /**
     * kong.service.request.set_path("/v2/movies")
-    * @param path The path string. Example: "/v2/movies"
+    * @param path The path string. Special characters and UTF-8 characters are allowed. Example: "/v2/movies" or "/foo/😀"
     * @returns throws an error on invalid inputs.
     */
     setPath(path: string): Promise<null>;
