@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 2.3.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 2.4.x, DO NOT EDIT
 // Original source path: kong/pdk/service/response.lua
 
 
@@ -9,12 +9,11 @@ export default interface response {
     * -- Plugin needs to call kong.service.request.enable_buffering() on `rewrite`
     * -- or `access` phase prior calling this function.
     * local body = kong.service.response.get_body()
-    * @param mimetype The mime-type of the response (if known)
-    * @param mimetype? the MIME type
+    * @param mimetype? The mime-type of the response (if known)
     * @param max_args? set a limit on the maximum number of parsed
     * @returns body The raw buffered body
     */
-    getBody(mimetype: string, mimetype?: string, max_args?: number): Promise<string>;
+    getBody(mimetype?: string, max_args?: number): Promise<string>;
 
     /**
     * -- Given a response with the following headers:

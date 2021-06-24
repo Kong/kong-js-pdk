@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 2.3.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 2.4.x, DO NOT EDIT
 // Original source path: kong/pdk/service.lua
 
 import type request from "./request"
@@ -8,6 +8,7 @@ export default interface service {
 
     request: request;
     response: response;
+
     /**
     * kong.service.set_target("service.local", 443)
     * kong.service.set_target("192.168.130.1", 80)
@@ -37,20 +38,6 @@ export default interface service {
     * @returns An error message describing the error if there was one
     */
     setTlsVerifyDepth(depth: number): Promise<[ret_1: boolean, ret_2: string]>;
-
-    /**
-    * local store = require("resty.openssl.x509.store")
-    * local st = assert(store.new())
-    * -- st:add(...certificate)
-    * local ok, err = kong.service.set_tls_verify_store(st)
-    * if not ok then
-    * -- do something with error
-    * end
-    * @param store resty.openssl.x509.store object to use
-    * @returns `true` if the operation succeeded, `nil` if an error occurred
-    * @returns An error message describing the error if there was one
-    */
-    setTlsVerifyStore(store: Array<string | number> | object): Promise<[ret_1: boolean, ret_2: string]>;
 
     /**
     * local ok, err = kong.service.set_upstream("service.prod")
