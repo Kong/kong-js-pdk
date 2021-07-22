@@ -135,6 +135,7 @@ class Server {
 
     return {
       Name: name,
+      Version: plugin.getVersion(),
       Phases: plugin.getPhases(),
       Priority: plugin.getPriority(),
       Schema: {
