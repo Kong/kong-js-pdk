@@ -14,7 +14,7 @@
     "uuid": "^8.3.2"
   },
   "dependencies": {
-    "@types/node": "^14.14.32",
+    "@types/node": "^16.4.1",
     "commander": "^8.0.0",
     "msgpack": "^1.0.3",
     "node-color-log": "^5.2.0",
