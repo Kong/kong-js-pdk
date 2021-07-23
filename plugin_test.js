@@ -265,7 +265,7 @@ class Request {
     let response = new Response(this.url.toString())
     response.status = 200
     response.body = "OK"
-    response.headers = new Headers(this.headers)
+    response.headers = new fetch.Headers(this.headers)
     return response
   }
 }
