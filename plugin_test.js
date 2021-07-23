@@ -220,7 +220,7 @@ class PluginTest {
 
 class Request {
   url = new URL("http://konghq.com");
-  headers = new Headers();
+  headers = new fetch.Headers();
   method = "GET";
   isHttps = false;
   isTCP = false;
