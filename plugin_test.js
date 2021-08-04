@@ -2,7 +2,7 @@
 
 const path = require('path')
 const { v4: uuidv4 } = require('uuid')
-
+const fetch = require("node-fetch")
 const PDK = require(path.join(__dirname, 'pdk'))
 const PipePair = require(path.join(__dirname, 'lib', 'pipe'))
 const {
@@ -220,7 +220,7 @@ class PluginTest {
 
 class Request {
   url = new URL("http://konghq.com");
-  headers = new Headers();
+  headers = new fetch.Headers();
   method = "GET";
   isHttps = false;
   isTCP = false;
@@ -265,7 +265,7 @@ class Request {
     let response = new Response(this.url.toString())
     response.status = 200
     response.body = "OK"
-    response.headers = new Headers(this.headers)
+    response.headers = new fetch.Headers(this.headers)
     return response
   }
 }
@@ -273,12 +273,12 @@ class Request {
 class Response {
   status;
   body = "";
-  headers = new Headers();
+  headers = new fetch.Headers();
 
   constructor(response) {
     if (response !== undefined) {
       this.status = response.status
-      this.headers = new Headers(response.headers)
+      this.headers = new fetch.Headers(response.headers)
       this.body = response.body
     }
   }
