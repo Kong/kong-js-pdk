@@ -2,8 +2,9 @@ style: github
 template: CHANGELOG.tpl.md
 info:
   title: CHANGELOG
-  repository_url: https://github.com/fffonion/kong-pdk
+  repository_url: https://github.com/Kong/kong-js-pdk 
 options:
+  sort: "semver"
   commits:
      filters:
        Type:
@@ -11,13 +12,13 @@ options:
          - fix
          - refactor
   commit_groups:
-    # title_maps:
-    #   feat: Features
-    #   fix: Bug Fixes
-    #   perf: Performance Improvements
-    #   refactor: Code Refactoring
+     title_maps:
+       feat: Features
+       fix: Bug Fixes
+       perf: Performance Improvements
+       refactor: Code Refactoring
   header:
-    pattern: "^(\\w*):\\s(.*)$"
+    pattern: "^(\\w*)(?:\\([\\w\\$\\.\\-\\*\\s\\/]*\\))?:?\\s(.*)$"
     pattern_maps:
       - Type
       - Subject
