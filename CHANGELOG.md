@@ -2,52 +2,59 @@
 ## [Unreleased]
 
 
+<a name="0.4.0"></a>
+## [0.4.0] - 2021-08-05
+### features
+- adds Version as named property in GetPluginInfo function in GetPluginInfo function([#20](https://github.com/Kong/kong-js-pdk/issues/20)) [383e44e](https://github.com/Kong/kong-js-pdk/commit/383e44e50ade0a74b390a0a822659591280dae3a)
+
+
 <a name="0.3.5"></a>
 ## [0.3.5] - 2021-06-24
 
 <a name="0.3.4"></a>
 ## [0.3.4] - 2021-06-15
-### fix
-- server to generate correct Step functions ([#11](https://github.com/fffonion/kong-pdk/issues/11)) [46208f5](https://github.com/fffonion/kong-pdk/commit/46208f5c5c3968a82bddfd185b47dc8b34d8cb92)
-- remove kong.table TS definitions ([#12](https://github.com/fffonion/kong-pdk/issues/12)) [128bc58](https://github.com/fffonion/kong-pdk/commit/128bc5850d9cdf4f51124623d394093914326f3e)
+### bug fixes
+- server to generate correct Step functions ([#11](https://github.com/Kong/kong-js-pdk/issues/11)) [46208f5](https://github.com/Kong/kong-js-pdk/commit/46208f5c5c3968a82bddfd185b47dc8b34d8cb92)
+- remove kong.table TS definitions ([#12](https://github.com/Kong/kong-js-pdk/issues/12)) [128bc58](https://github.com/Kong/kong-js-pdk/commit/128bc5850d9cdf4f51124623d394093914326f3e)
 
 
 <a name="0.3.3"></a>
 ## [0.3.3] - 2021-05-19
-### fix
-- reorganize dependencies ([#8](https://github.com/fffonion/kong-pdk/issues/8)) [167e56c](https://github.com/fffonion/kong-pdk/commit/167e56c2b1de07efd345bfddafff8ae7201e7a9b)
+### bug fixes
+- reorganize dependencies ([#8](https://github.com/Kong/kong-js-pdk/issues/8)) [167e56c](https://github.com/Kong/kong-js-pdk/commit/167e56c2b1de07efd345bfddafff8ae7201e7a9b)
 
 
 <a name="0.3.2"></a>
 ## [0.3.2] - 2021-05-19
-### feat
-- add tooling to test plugin code ([#7](https://github.com/fffonion/kong-pdk/issues/7)) [82d01a6](https://github.com/fffonion/kong-pdk/commit/82d01a68885c5b049dc72aaf0a969cc476bbb38d)
+### features
+- add tooling to test plugin code ([#7](https://github.com/Kong/kong-js-pdk/issues/7)) [82d01a6](https://github.com/Kong/kong-js-pdk/commit/82d01a68885c5b049dc72aaf0a969cc476bbb38d)
 
 
 <a name="0.3.1"></a>
 ## [0.3.1] - 2021-05-13
-### fix
-- use standarlized error for instance not found exception [32960ff](https://github.com/fffonion/kong-pdk/commit/32960ff1015f2cc85d2ad147d4fc31a1ba543b7d)
+### bug fixes
+- use standarlized error for instance not found exception [32960ff](https://github.com/Kong/kong-js-pdk/commit/32960ff1015f2cc85d2ad147d4fc31a1ba543b7d)
 
 
 <a name="0.3.0"></a>
 ## [0.3.0] - 2021-05-07
-### fix
-- popup PDK errors and add response phase [9152fc1](https://github.com/fffonion/kong-pdk/commit/9152fc187420c66d2421af8ecdffbfe0617ea482)
-- indent and style for package.json [883d1d7](https://github.com/fffonion/kong-pdk/commit/883d1d7778b224cc5a836b78f74f125209f420ad)
+### bug fixes
+- popup PDK errors and add response phase [9152fc1](https://github.com/Kong/kong-js-pdk/commit/9152fc187420c66d2421af8ecdffbfe0617ea482)
+- indent and style for package.json [883d1d7](https://github.com/Kong/kong-js-pdk/commit/883d1d7778b224cc5a836b78f74f125209f420ad)
 
 
 <a name="0.1.0"></a>
 ## 0.1.0 - 2021-03-15
-### feat
-- allow to import TypeScript plugin directly [c375a11](https://github.com/fffonion/kong-pdk/commit/c375a11587af296ffeca5b103fa6e8c51e79d1a4)
-- support write plugin in typescript [f63bb91](https://github.com/fffonion/kong-pdk/commit/f63bb9182cc422f9a80c89abc59f6725dc6b426c)
+### features
+- allow to import TypeScript plugin directly [c375a11](https://github.com/Kong/kong-js-pdk/commit/c375a11587af296ffeca5b103fa6e8c51e79d1a4)
+- support write plugin in typescript [f63bb91](https://github.com/Kong/kong-js-pdk/commit/f63bb9182cc422f9a80c89abc59f6725dc6b426c)
 
 
-[Unreleased]: https://github.com/fffonion/kong-pdk/compare/0.3.5...HEAD
-[0.3.5]: https://github.com/fffonion/kong-pdk/compare/0.3.4...0.3.5
-[0.3.4]: https://github.com/fffonion/kong-pdk/compare/0.3.3...0.3.4
-[0.3.3]: https://github.com/fffonion/kong-pdk/compare/0.3.2...0.3.3
-[0.3.2]: https://github.com/fffonion/kong-pdk/compare/0.3.1...0.3.2
-[0.3.1]: https://github.com/fffonion/kong-pdk/compare/0.3.0...0.3.1
-[0.3.0]: https://github.com/fffonion/kong-pdk/compare/0.1.0...0.3.0
+[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.4.0...HEAD
+[0.4.0]: https://github.com/Kong/kong-js-pdk/compare/0.3.5...0.4.0
+[0.3.5]: https://github.com/Kong/kong-js-pdk/compare/0.3.4...0.3.5
+[0.3.4]: https://github.com/Kong/kong-js-pdk/compare/0.3.3...0.3.4
+[0.3.3]: https://github.com/Kong/kong-js-pdk/compare/0.3.2...0.3.3
+[0.3.2]: https://github.com/Kong/kong-js-pdk/compare/0.3.1...0.3.2
+[0.3.1]: https://github.com/Kong/kong-js-pdk/compare/0.3.0...0.3.1
+[0.3.0]: https://github.com/Kong/kong-js-pdk/compare/0.1.0...0.3.0
