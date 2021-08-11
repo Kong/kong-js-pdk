@@ -4,6 +4,6 @@
   },
   "devDependencies": {
     "jest": "^27.0.6",
-    "kong-pdk": "^0.3.2"
+    "kong-pdk": "^0.4.0"
   }
 }
