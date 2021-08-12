@@ -6,9 +6,9 @@ import kong from "kong-pdk/kong"
 // This is an example plugin that add a header to the response
 
 class KongPlugin {
-  config;
+  config: any;
 
-  constructor(config) {
+  constructor(config: any) {
     this.config = config
   }
 
