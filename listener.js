@@ -2,10 +2,10 @@
 
 const net = require("net")
 const fs = require("fs")
-const msgpack = require("msgpack")
+const { Encoder, Decoder } = require("@msgpack/msgpack")
 
 let write_response = function (client, msgid, response) {
-  client.write(msgpack.pack([
+  client.write(client.encoder.encode([
     1, // is response
     msgid,
     undefined,
@@ -14,7 +14,7 @@ let write_response = function (client, msgid, response) {
 }
 
 let write_error = function (client, msgid, error) {
-  client.write(msgpack.pack([
+  client.write(client.encoder.encode([
     1, // is response
     msgid,
     error,
@@ -27,6 +27,36 @@ let errToString = function(err) {
     return err.message
   }
   return err.toString()
+}
+
+let getStreamDecoder = function () {
+  const decoder = new Decoder()
+  let buffer
+
+  return function (chunk) {
+    let decoded
+    try {
+      let data = chunk
+      if (buffer !== undefined) {
+        buffer.push(chunk)
+        data = Buffer.concat(buffer)
+      }
+      decoded = decoder.decode(data)
+      buffer = undefined
+    } catch (ex) {
+      // TODO: less hacky way to detect insufficient data
+      if (ex instanceof RangeError && errToString(ex) == "RangeError: Insufficient data") {
+        if (buffer === undefined) {
+          buffer = [chunk]
+        }
+        return
+      } else {
+        throw ex
+      }
+    }
+
+    return decoded
+  }
 }
 
 
@@ -45,8 +75,17 @@ class Listener {
     }
 
     var unixServer = net.createServer((client) => {
-      client.on('data', (data) => {
-        let [_, msgid, method, args] = msgpack.unpack(data)
+      client.encoder = new Encoder()
+      const decodeStream = getStreamDecoder()
+
+      client.on('data', (chunk) => {
+        let decoded = decodeStream(chunk)
+        if (decoded === undefined) {
+          // partial data received, wait for next chunk
+          return
+        }
+
+        let [_, msgid, method, args] = decoded
         let [ns, cmd] = method.split(".")
         if (ns != "plugin") {
           write_error(client, msgid, "RPC for %s is not supported" % ns)
