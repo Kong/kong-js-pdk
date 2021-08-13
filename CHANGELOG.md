@@ -2,8 +2,15 @@
 ## [Unreleased]
 
 
+<a name="0.4.1"></a>
+## [0.4.1] - 2021-08-13
+### bug fixes
+- allow to concat buffer larger than 64k ([#34](https://github.com/Kong/kong-js-pdk/issues/34)) [f0b0ce5](https://github.com/Kong/kong-js-pdk/commit/f0b0ce5f1a2ae5857402a3db931ba1f7b0bb8df0)
+- add kong.response.error in plugin_test ([#35](https://github.com/Kong/kong-js-pdk/issues/35)) [4a469f1](https://github.com/Kong/kong-js-pdk/commit/4a469f1d77327890c0bb6217a418bcdc64acbc34)
+
+
 <a name="0.4.0"></a>
-## [0.4.0] - 2021-08-05
+## [0.4.0] - 2021-08-06
 ### features
 - adds Version as named property in GetPluginInfo function in GetPluginInfo function([#20](https://github.com/Kong/kong-js-pdk/issues/20)) [383e44e](https://github.com/Kong/kong-js-pdk/commit/383e44e50ade0a74b390a0a822659591280dae3a)
 
@@ -50,7 +57,8 @@
 - support write plugin in typescript [f63bb91](https://github.com/Kong/kong-js-pdk/commit/f63bb9182cc422f9a80c89abc59f6725dc6b426c)
 
 
-[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.4.0...HEAD
+[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.4.1...HEAD
+[0.4.1]: https://github.com/Kong/kong-js-pdk/compare/0.4.0...0.4.1
 [0.4.0]: https://github.com/Kong/kong-js-pdk/compare/0.3.5...0.4.0
 [0.3.5]: https://github.com/Kong/kong-js-pdk/compare/0.3.4...0.3.5
 [0.3.4]: https://github.com/Kong/kong-js-pdk/compare/0.3.3...0.3.4
