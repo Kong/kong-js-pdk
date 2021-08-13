@@ -93,6 +93,9 @@ let mockFunctions = {
     }
     i.setExiting(true)
   },
+  "kong.response.error": function(i, status, message, headers) {
+    mockFunctions["kong.response.exit"](i, status, message, headers)
+  },
 
   "kong.router.get_route": function() { return {
     id: uuidv4(),
