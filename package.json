@@ -13,7 +13,7 @@
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
     "jest": "^27.0.6",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.0.0",
     "uuid": "^8.3.2"
   },
   "dependencies": {
