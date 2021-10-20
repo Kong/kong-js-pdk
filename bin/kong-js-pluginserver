@@ -20,7 +20,7 @@ let ps = new Server(opts.pluginsDirectory, logger)
 if (opts.DumpPluginInfo) {
   ps.GetPluginInfo(opts.DumpPluginInfo)
     .then((v) => {
-      process.stdout.write(msgpack.pack(v))
+      process.stdout.write(msgpack.encode(v))
     })
 } else if (opts.DumpAllPlugins) {
   Promise.all(function* () {
