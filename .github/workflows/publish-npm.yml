@@ -13,8 +13,8 @@ jobs:
     - name: Publish if version has been updated
       uses: pascalgn/npm-publish-action@1.3.8
       with: # All of theses inputs are optional
-        tag_name: "v%s"
-        tag_message: "v%s"
+        tag_name: "%s"
+        tag_message: "%s"
         create_tag: "true"
         commit_pattern: "^release: (\\S+)"
         workspace: "."
