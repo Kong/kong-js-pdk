@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="0.4.3"></a>
+## [0.4.3] - 2021-10-21
+### bug fixes
+- rename msgpack.pack to msgpack.encode ([#77](https://github.com/Kong/kong-js-pdk/issues/77)) [8fc0ff5](https://github.com/Kong/kong-js-pdk/commit/8fc0ff5ef9bcee5d446bdf3b19a5457c98c69f1a)
+
+
 <a name="0.4.2"></a>
 ## [0.4.2] - 2021-08-13
 ### bug fixes
@@ -57,7 +63,8 @@
 - support write plugin in typescript [f63bb91](https://github.com/Kong/kong-js-pdk/commit/f63bb9182cc422f9a80c89abc59f6725dc6b426c)
 
 
-[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.4.2...HEAD
+[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.4.3...HEAD
+[0.4.3]: https://github.com/Kong/kong-js-pdk/compare/0.4.2...0.4.3
 [0.4.2]: https://github.com/Kong/kong-js-pdk/compare/0.4.0...0.4.2
 [0.4.0]: https://github.com/Kong/kong-js-pdk/compare/0.3.5...0.4.0
 [0.3.5]: https://github.com/Kong/kong-js-pdk/compare/0.3.4...0.3.5
