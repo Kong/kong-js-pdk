@@ -1,6 +1,5 @@
 'use strict';
 
-let proc = require("process")
 import kong from "kong-pdk/kong"
 
 // This is an example plugin that add a header to the response
@@ -23,7 +22,7 @@ class KongPlugin {
     // the following can be "parallel"ed
     await Promise.all([
       kong.response.setHeader("x-hello-from-javascript", "Javascript says " + message + " to " + host),
-      kong.response.setHeader("x-javascript-pid", proc.pid),
+      kong.response.setHeader("x-javascript-pid", process.pid),
     ])
   }
 }

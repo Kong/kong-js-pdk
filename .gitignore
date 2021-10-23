@@ -2,16 +2,7 @@
 node_modules/
 /dist/
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-{{#unit}}
-/test/unit/coverage/
-{{/unit}}
-{{#e2e}}
-/test/e2e/reports/
-selenium-debug.log
-{{/e2e}}
-
+coverage/
 # Editor directories and files
 .idea
 .vscode
@@ -19,6 +10,8 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
+*.vim
+*.swp
 
 examples/package-lock.json
 examples/node_modules
