@@ -2,30 +2,39 @@
 
 const fs = require('fs')
 const path = require('path')
-const process = require('process');
-const {
-  Module
-} = require(path.join(__dirname, 'lib', 'mod'))
-
-const PipePair = require(path.join(__dirname, 'lib', 'pipe'))
-const PDK = require(path.join(__dirname, 'pdk'))
+const {Module} = require('./lib/mod')
+const PipePair = require('./lib/pipe')
+const PDK = require('./pdk')
 
 const entities = ['Service', 'Consumer', 'Route', 'Plugin', 'Credential', 'MemoryStats']
 const MSG_RET = 'ret'
+const ERROR_NAME = "PluginServerError"
 
 class PluginServerError extends Error {
-  constructor(message) {
-    super(message)
-    this.name = "PluginServerError"
+  get name () {
+    return ERROR_NAME
+  }
+
+  constructor(args) {
+    super(...args)
+    Error.captureStackTrace(this, this.constructor)
   }
 }
 
 class Server {
+  get Error() {
+    return PluginServerError
+  }
+
+  static get Error() {
+    return PluginServerError
+  }
+
   constructor(pluginDir, logger, expireTtl) {
     this.pluginDir = pluginDir
     this.logger = logger
-    this.plugins = {}
-    this.instances = {}
+    this.plugins = Object.create(null)
+    this.instances = Object.create(null)
     this.instanceID = 0
     this.events = {}
     this.eventID = 0
@@ -87,9 +96,13 @@ class Server {
   }
 
   async SetPluginDir(dir) {
-    if (fs.existsSync(dir) === false) {
-      return Promise.reject(new PluginServerError(dir + "not exists"))
+    try {
+      await fs.promises.stat(dir)
+    } catch (err) {
+      if (err.code === 'ENOENT') throw new PluginServerError(dir + "not exists")
+      throw err
     }
+
     this.pluginDir = dir
     this.loadPlugins()
     return "ok"
@@ -101,11 +114,7 @@ class Server {
     for (let name in this.plugins) {
       let instances = []
       for (let iid in this.instances) {
-        let [i, err] = this.instanceStatus(iid)
-        if (err !== undefined) {
-          throw new PluginServerError(err)
-        }
-        instances.push(i)
+        instances.push(await this.InstanceStatus(iid))
       }
 
       let plugin = this.plugins[name]
@@ -128,7 +137,7 @@ class Server {
   // RPC method
   async GetPluginInfo(name) {
     if (this.plugins[name] === undefined) {
-      return Promise.reject(new PluginServerError(name + " not initizlied"))
+      throw new PluginServerError(name + " not initizlied")
     }
 
     let plugin = this.plugins[name]
@@ -154,7 +163,7 @@ class Server {
   async StartInstance(cfg) {
     let name = cfg.Name
     if (name === undefined || this.plugins[name] === undefined) {
-      return Promise.reject(new PluginServerError(name + " not initizlied"))
+      throw new PluginServerError(name + " not initizlied")
     }
 
     let plugin = this.plugins[name]
@@ -176,7 +185,7 @@ class Server {
   async InstanceStatus(iid) {
     if (iid === undefined || this.instances[iid] == undefined) {
       // Note: Kong expect the error to start with "no plugin instance"
-      return Promise.reject(new PluginServerError("no plugin instance #" + iid))
+      throw new PluginServerError("no plugin instance #" + iid)
     }
 
     let ins = this.instances[iid]
@@ -192,7 +201,7 @@ class Server {
   async CloseInstance(iid) {
     if (iid === undefined || this.instances[iid] == undefined) {
       // Note: Kong expect the error to start with "no plugin instance"
-      return Promise.reject(new PluginServerError("no plugin instance #" + iid))
+      throw new PluginServerError("no plugin instance #" + iid)
     }
 
     let ins = this.instances[iid]
@@ -211,7 +220,7 @@ class Server {
     let iid = event.InstanceId
     if (iid == undefined || this.instances[iid] === undefined) {
       // Note: Kong expect the error to start with "no plugin instance"
-      return Promise.reject(new PluginServerError("no plugin instance #" + iid))
+      throw new PluginServerError("no plugin instance #" + iid)
     }
 
     let ins = this.instances[iid]
@@ -249,7 +258,7 @@ class Server {
   async step(data, isError) {
     let eid = data.EventId
     if (eid === undefined || this.events[eid] === undefined) {
-      return Promise.reject(new PluginServerError("event id " + eid + " not found"))
+      throw new PluginServerError("event id " + eid + " not found")
     }
 
     let din = data.Data

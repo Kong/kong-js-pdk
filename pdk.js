@@ -1,20 +1,25 @@
 'use strict';
 
+const ERROR_NAME = 'PDKError'
+
 class PDKError extends Error {
-  constructor(message) {
-    super(message)
-    this.name = "PDKError"
+  get name () {
+    return ERROR_NAME
+  }
+
+  constructor(...args) {
+    super(...args)
+    Error.captureStackTrace(this, this.constructor)
   }
 }
 
 const bridgeHandler = {
   get(target, name) {
     // camelCase to underscore_case
-    name = name.replace(/[a-z][A-Z]/g,
-      function (s) {
-        return s.substring(0, 1) + "_" + s.substring(1).toLowerCase()
-      })
-    return newBridgeCall(target.prefix + "." + name, target.call)
+    const clean_name = name.replace(/[a-z][A-Z]/g, (str) => {
+      return (str.substring(0, 1) + "_" + str.substring(1)).toLowerCase()
+    })
+    return newBridgeCall(`${target.prefix}.${clean_name}`, target.call)
   }
 }
 
@@ -29,20 +34,33 @@ function newBridgeCall(prefix, call) {
 }
 
 function rpcCall(rpcPipe) {
-  return async (m, ...args) => {
+  return async (method, ...args) => {
     rpcPipe.put({
-      "Method": m,
+      "Method": method,
       "Args": args,
     })
-    let [ret, err] = await rpcPipe.get()
-    if (err !== undefined) {
-      throw new PDKError("PDK method " + m + " failed: " + err)
+    const [ret, err] = await rpcPipe.get()
+
+    if (err) {
+      throw new PDKError(`PDK method ${method} failed:  ${err}`)
     }
     return ret
   }
 }
 
 class Kong {
+  get [Symbol.toStringTag]() {
+    return 'KongPDK'
+  }
+
+  get Error() {
+    return PDKError
+  }
+
+  static get Error() {
+    return PDKError
+  }
+
   constructor(rpcPipe) {
     this.kong = newBridgeCall("kong", rpcCall(rpcPipe))
   }
