@@ -7,15 +7,15 @@ let path = require('path')
 const msgpack = require("@msgpack/msgpack")
 const logger = require('node-color-log')
 
-let cli = require('kong-pdk/cli')
-let Server = require('kong-pdk/server')
-let Listener = require('kong-pdk/listener')
+let cli = require('../cli')
+let Server = require('../server')
+let Listener = require('../listener')
 
-let opts = cli.parse()
+const opts = cli.parse()
 
 logger.setLevel(opts.logLevel)
 
-let ps = new Server(opts.pluginsDirectory, logger)
+const ps = new Server(opts.pluginsDirectory, logger)
 
 if (opts.DumpPluginInfo) {
   ps.GetPluginInfo(opts.DumpPluginInfo)

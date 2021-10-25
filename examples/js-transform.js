@@ -1,7 +1,5 @@
 'use strict';
 
-let proc = require("process")
-
 // This is an example plugin that appends a string in response body
 
 class KongPlugin {
