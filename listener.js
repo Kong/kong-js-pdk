@@ -1,15 +1,21 @@
 'use strict'
 
-const net = require("net")
-const fs = require("fs")
-const {Encoder, Decoder} = require("@msgpack/msgpack")
+const net = require('net')
+const fs = require('fs')
+const {Encoder, Decoder} = require('@msgpack/msgpack')
 const TYPE_EXP = /^\[object (.*)\]$/
+const ERR_UNKNOWN = 'Unknown plugin listener error encountered'
 const toString = Object.prototype.toString
 
 function typeOf(value) {
   if (!value) return ''
   const parts = TYPE_EXP.exec(toString.call(value))
   return parts[1].toLowerCase()
+}
+
+function thenable(obj) {
+  if (!obj) return false
+  return (typeof obj.then === 'function' && typeof obj.catch === 'function')
 }
 
 function write_response (client, msgid, response) {
@@ -25,16 +31,16 @@ function write_error (client, msgid, error) {
   client.write(client.encoder.encode([
     1, // is response
     msgid,
-    error,
+    errToString(error),
     undefined
   ]))
 }
 
 function errToString (err) {
-  if (typeOf(err) === "pluginservererror") {
-    return err.message
-  }
-  return err.toString()
+  if (typeof err === 'string') return err
+  if (has(err, 'message')) return err.message
+  if (typeof err.toString === 'function') return err.toString()
+  return ERR_UNKNOWN
 }
 
 function getStreamDecoder () {
@@ -53,14 +59,14 @@ function getStreamDecoder () {
       buffer = undefined
     } catch (ex) {
       // TODO: less hacky way to detect insufficient data
-      if (ex instanceof RangeError && errToString(ex) == "RangeError: Insufficient data") {
+      if (ex.message === 'Insufficient data') {
         if (buffer === undefined) {
           buffer = [chunk]
         }
         return
-      } else {
-        throw ex
       }
+
+      throw ex
     }
 
     return decoded
@@ -82,8 +88,10 @@ class Listener {
     const listen_path = this.prefix
     const logger = this.logger
 
-    if (fs.existsSync(listen_path)) {
+    try {
       fs.unlinkSync(listen_path)
+    } catch (ex) {
+      if (ex.code !== 'ENOENT') throw ex
     }
 
     const server = net.createServer((client) => {
@@ -92,23 +100,22 @@ class Listener {
 
       client.on('data', (chunk) => {
         let decoded = decodeStream(chunk)
-        if (decoded === undefined) {
-          // partial data received, wait for next chunk
-          return
-        }
+
+        // partial data received, wait for next chunk
+        if (!decoded) return
 
         let [_, msgid, method, args] = decoded
-        let [ns, cmd] = method.split(".")
-        if (ns != "plugin") {
-          write_error(client, msgid, "RPC for %s is not supported" % ns)
+        let [ns, cmd] = method.split('.')
+        if (ns != 'plugin') {
+          write_error(client, msgid, `RPC for ${ns} is not supported`)
           return
         }
 
         logger.debug(`rpc: #${msgid} method: ${method} args: ${JSON.stringify(args)}`)
         if (!this.ps[cmd]) {
-          const err = "method \"" + cmd + "\" not implemented"
-          logger.error("rpc: #" + msgid + " " + err)
-          write_error(client, msgid, errToString(err))
+          const err = `method ${cmd} not implemented`
+          logger.error(`rpc: #${msgid} ${err}`)
+          write_error(client, msgid, err)
           return
         }
 
@@ -117,15 +124,14 @@ class Listener {
           promise = this.ps[cmd](...args)
         } catch (ex) {
           logger.error(ex.stack)
-          write_error(client, msgid, errToString(ex))
+          write_error(client, msgid, ex)
           return
         }
 
-        const type = typeOf(promise)
-        if (type !== 'promise') {
-          const err = `${cmd} should return a Promise object, got ${type}`
-          logger.error("rpc: #" + msgid + " " + err)
-          write_error(client, msgid, errToString(err))
+        if (!thenable(promise)) {
+          const err = `${cmd} should return a Promise or thenable object, got ${typeOf(promise)}`
+          logger.error(`rpc: #${msgid} ${err}`)
+          write_error(client, msgid, err)
           return
         }
 
@@ -135,13 +141,13 @@ class Listener {
           })
           .catch((err) => {
             logger.error(`rpc: # ${msgid} ${err}`)
-            write_error(client, msgid, errToString(err))
+            write_error(client, msgid, err)
           })
       })
     })
 
-    logger.info("server started at", listen_path)
     server.listen(listen_path)
+    logger.info('server started at', listen_path)
     return server
   }
 }

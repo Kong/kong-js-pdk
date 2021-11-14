@@ -16,15 +16,14 @@ const opts = cli.parse()
 logger.setLevel(opts.logLevel)
 
 const ps = new Server(opts.pluginsDirectory, logger)
-
 if (opts.DumpPluginInfo) {
   ps.GetPluginInfo(opts.DumpPluginInfo)
     .then((v) => {
       process.stdout.write(msgpack.encode(v))
     })
 } else if (opts.DumpAllPlugins) {
-  Promise.all(function* () {
-    for (let plugin in ps.getPlugins()) {
+  Promise.all(function *() {
+    for (const plugin of ps.getPlugins().keys()) {
       yield ps.GetPluginInfo(plugin)
     }
   }())

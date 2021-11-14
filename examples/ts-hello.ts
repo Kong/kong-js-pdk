@@ -6,7 +6,6 @@ import kong from "../kong"
 
 class KongPlugin {
   config: any;
-
   constructor(config: any) {
     this.config = config
   }
@@ -29,6 +28,7 @@ class KongPlugin {
 
 module.exports = {
   Plugin: KongPlugin,
+  Name: 'hello',
   Schema: [
     { message: { type: "string" } },
   ],
