@@ -2,9 +2,17 @@
 
 const net = require("net")
 const fs = require("fs")
-const { Encoder, Decoder } = require("@msgpack/msgpack")
+const {Encoder, Decoder} = require("@msgpack/msgpack")
+const TYPE_EXP = /^\[object (.*)\]$/
+const toString = Object.prototype.toString
 
-let write_response = function (client, msgid, response) {
+function typeOf(value) {
+  if (!value) return ''
+  const parts = TYPE_EXP.exec(toString.call(value))
+  return parts[1].toLowerCase()
+}
+
+function write_response (client, msgid, response) {
   client.write(client.encoder.encode([
     1, // is response
     msgid,
@@ -13,7 +21,7 @@ let write_response = function (client, msgid, response) {
   ]))
 }
 
-let write_error = function (client, msgid, error) {
+function write_error (client, msgid, error) {
   client.write(client.encoder.encode([
     1, // is response
     msgid,
@@ -22,14 +30,14 @@ let write_error = function (client, msgid, error) {
   ]))
 }
 
-let errToString = function(err) {
-  if (err && err.name === "PluginServerError") {
+function errToString (err) {
+  if (typeOf(err) === "pluginservererror") {
     return err.message
   }
   return err.toString()
 }
 
-let getStreamDecoder = function () {
+function getStreamDecoder () {
   const decoder = new Decoder()
   let buffer
 
@@ -59,8 +67,11 @@ let getStreamDecoder = function () {
   }
 }
 
-
 class Listener {
+  get [Symbol.toStringTag]() {
+    return 'PluginListener'
+  }
+
   constructor(pluginServer, prefix) {
     this.ps = pluginServer
     this.prefix = prefix
@@ -68,13 +79,14 @@ class Listener {
   }
 
   serve() {
-    let listen_path = this.prefix
+    const listen_path = this.prefix
+    const logger = this.logger
 
     if (fs.existsSync(listen_path)) {
       fs.unlinkSync(listen_path)
     }
 
-    var unixServer = net.createServer((client) => {
+    const server = net.createServer((client) => {
       client.encoder = new Encoder()
       const decodeStream = getStreamDecoder()
 
@@ -92,10 +104,10 @@ class Listener {
           return
         }
 
-        this.logger.debug("rpc: #" + msgid + " method: " + method + " args: " + JSON.stringify(args))
-        if (this.ps[cmd] === undefined) {
-          let err = "method \"" + cmd + "\" not implemented"
-          this.logger.error("rpc: #" + msgid + " " + err)
+        logger.debug(`rpc: #${msgid} method: ${method} args: ${JSON.stringify(args)}`)
+        if (!this.ps[cmd]) {
+          const err = "method \"" + cmd + "\" not implemented"
+          logger.error("rpc: #" + msgid + " " + err)
           write_error(client, msgid, errToString(err))
           return
         }
@@ -104,14 +116,15 @@ class Listener {
         try {
           promise = this.ps[cmd](...args)
         } catch (ex) {
-          this.logger.error(ex.stack)
+          logger.error(ex.stack)
           write_error(client, msgid, errToString(ex))
           return
         }
 
-        if (! promise instanceof Promise) {
-          let err = cmd + " should return a Promise object, got " + typeof(promise)
-          this.logger.error("rpc: #" + msgid + " " + err)
+        const type = typeOf(promise)
+        if (type !== 'promise') {
+          const err = `${cmd} should return a Promise object, got ${type}`
+          logger.error("rpc: #" + msgid + " " + err)
           write_error(client, msgid, errToString(err))
           return
         }
@@ -121,16 +134,15 @@ class Listener {
             write_response(client, msgid, ret)
           })
           .catch((err) => {
-            this.logger.error("rpc: #" + msgid + " " + err)
+            logger.error(`rpc: # ${msgid} ${err}`)
             write_error(client, msgid, errToString(err))
           })
-        // .finally(function() {
-        //   this.logger.debug("rpc: #" + msgid + " method: " + method + " finished")
-        // })
       })
     })
-    this.logger.info("server started at", listen_path)
-    unixServer.listen(listen_path)
+
+    logger.info("server started at", listen_path)
+    server.listen(listen_path)
+    return server
   }
 }
 

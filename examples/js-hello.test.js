@@ -3,7 +3,7 @@ const plugin = require('./js-hello');
 const {
 	PluginTest,
 	Request
-} = require("kong-pdk/plugin_test")
+} = require("../plugin_test")
 
 
 test('Set headers in response', async () => {

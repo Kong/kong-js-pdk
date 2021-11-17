@@ -1,6 +1,6 @@
 'use strict';
 
-import kong from "kong-pdk/kong"
+import kong from "../kong"
 
 // This is an example plugin that add a header to the response
 
