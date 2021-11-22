@@ -2,6 +2,13 @@
 ## [Unreleased]
 
 
+<a name="0.4.4"></a>
+## [0.4.4] - 2021-11-22
+### bug fixes
+- remove unnecessary promise wrappers ([#81](https://github.com/Kong/kong-js-pdk/issues/81)) [32d2c8b](https://github.com/Kong/kong-js-pdk/commit/32d2c8bc46734bedbd242850fa0c69584c624d22)
+- remove unused import and use relative import in bin ([#80](https://github.com/Kong/kong-js-pdk/issues/80)) [65da804](https://github.com/Kong/kong-js-pdk/commit/65da804ab70ab2846b7b9a629281b65e171b0373)
+
+
 <a name="0.4.3"></a>
 ## [0.4.3] - 2021-10-21
 ### bug fixes
@@ -63,7 +70,8 @@
 - support write plugin in typescript [f63bb91](https://github.com/Kong/kong-js-pdk/commit/f63bb9182cc422f9a80c89abc59f6725dc6b426c)
 
 
-[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.4.3...HEAD
+[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.4.4...HEAD
+[0.4.4]: https://github.com/Kong/kong-js-pdk/compare/0.4.3...0.4.4
 [0.4.3]: https://github.com/Kong/kong-js-pdk/compare/0.4.2...0.4.3
 [0.4.2]: https://github.com/Kong/kong-js-pdk/compare/0.4.0...0.4.2
 [0.4.0]: https://github.com/Kong/kong-js-pdk/compare/0.3.5...0.4.0
