@@ -15,7 +15,7 @@ class PluginServerError extends Error {
     return ERROR_NAME
   }
 
-  constructor(args) {
+  constructor(...args) {
     super(...args)
     Error.captureStackTrace(this, this.constructor)
   }
