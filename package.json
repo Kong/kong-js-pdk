@@ -7,6 +7,15 @@
     "start": "node ./bin/kong-js-pluginserver -d $(pwd)/examples",
     "test": "jest --coverage"
   },
+  "files": [
+    "bin",
+    "kong",
+    "lib",
+    "cli.js",
+    "listener.js",
+    "pdk.js",
+    "server.js"
+  ],
   "author": "Kong",
   "license": "Apache-2.0",
   "devDependencies": {
@@ -32,6 +41,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Kong/kong-js-pdk.git"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": ["/node_modules/", "plugin_test"]
   },
   "bugs": {
     "url": "https://github.com/Kong/kong-js-pdk/issues"

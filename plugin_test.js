@@ -180,6 +180,7 @@ class PluginTest {
     }
 
     await this.executePhase(pluginInstance, "log")
+    return {mod: pluginModule, instance: pluginInstance}
   }
 
   async executePhase(ins, phase) {

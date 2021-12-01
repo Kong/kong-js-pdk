@@ -1,4 +1,4 @@
-const plugin = require('./js-transform');
+const plugin = require('../examples/js-transform');
 
 const {
   PluginTest,
