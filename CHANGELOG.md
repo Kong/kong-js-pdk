@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="0.5.0"></a>
+## [0.5.0] - 2021-12-09
+### bug fixes
+- correct error constructor arguments ([#100](https://github.com/Kong/kong-js-pdk/issues/100)) [9375614](https://github.com/Kong/kong-js-pdk/commit/9375614c7c3d5b198ee858a174c065a98b658f95)
+
+### features
+- allow plugin loading from discrete npm packages ([#101](https://github.com/Kong/kong-js-pdk/issues/101)) [ec76dc8](https://github.com/Kong/kong-js-pdk/commit/ec76dc83132d388aeecca41fb5e756c0b40fbd26)
+
+
 <a name="0.4.4"></a>
 ## [0.4.4] - 2021-11-22
 ### bug fixes
@@ -70,7 +79,8 @@
 - support write plugin in typescript [f63bb91](https://github.com/Kong/kong-js-pdk/commit/f63bb9182cc422f9a80c89abc59f6725dc6b426c)
 
 
-[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.4.4...HEAD
+[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.5.0...HEAD
+[0.5.0]: https://github.com/Kong/kong-js-pdk/compare/0.4.4...0.5.0
 [0.4.4]: https://github.com/Kong/kong-js-pdk/compare/0.4.3...0.4.4
 [0.4.3]: https://github.com/Kong/kong-js-pdk/compare/0.4.2...0.4.3
 [0.4.2]: https://github.com/Kong/kong-js-pdk/compare/0.4.0...0.4.2
