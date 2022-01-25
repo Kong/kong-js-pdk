@@ -14,7 +14,8 @@
     "cli.js",
     "listener.js",
     "pdk.js",
-    "server.js"
+    "server.js",
+    "plugin_test.js"
   ],
   "author": "Kong",
   "license": "Apache-2.0",
