@@ -13,3 +13,4 @@ jobs:
           target: minor
           # needs push access to repo
           github-token: ${{ secrets.DEPENDABOT_AUTOMERGE_PUSH_TOKEN }}
+          command: "squash and merge"
