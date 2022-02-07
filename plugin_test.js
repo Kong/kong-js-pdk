@@ -174,7 +174,7 @@ class PluginTest {
     } else{
       await this.executePhase(pluginInstance, "access")
       await this.executePhase(pluginInstance, "rewrite")
-      if (this.response.status === undefined) {
+      if (!this.exiting) {
         this.serviceResponse = this.serviceRequest.toResponse()
         this.response.merge(this.serviceResponse)
       }
