@@ -2,6 +2,13 @@
 ## [Unreleased]
 
 
+<a name="0.5.2"></a>
+## [0.5.2] - 2022-02-17
+### bug fixes
+- exit immediately from kong.response.{error,exit} ([#141](https://github.com/Kong/kong-js-pdk/issues/141)) [c0fab3b](https://github.com/Kong/kong-js-pdk/commit/c0fab3b097f590af547eca648e44e00a0e4c4c0e)
+- conditionally merging the serviceResponse only if the response.status is undefined ([#131](https://github.com/Kong/kong-js-pdk/issues/131)) [c9eed50](https://github.com/Kong/kong-js-pdk/commit/c9eed50e29bceb59db5a17506dcf086cc906f050)
+
+
 <a name="0.5.1"></a>
 ## [0.5.1] - 2022-01-25
 
@@ -82,7 +89,8 @@
 - support write plugin in typescript [f63bb91](https://github.com/Kong/kong-js-pdk/commit/f63bb9182cc422f9a80c89abc59f6725dc6b426c)
 
 
-[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.5.1...HEAD
+[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.5.2...HEAD
+[0.5.2]: https://github.com/Kong/kong-js-pdk/compare/0.5.1...0.5.2
 [0.5.1]: https://github.com/Kong/kong-js-pdk/compare/0.5.0...0.5.1
 [0.5.0]: https://github.com/Kong/kong-js-pdk/compare/0.4.4...0.5.0
 [0.4.4]: https://github.com/Kong/kong-js-pdk/compare/0.4.3...0.4.4
