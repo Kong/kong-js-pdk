@@ -33,12 +33,22 @@ function newBridgeCall(prefix, call) {
   return new Proxy(bridgeCall, bridgeHandler);
 }
 
+// those methods never return, instead, they exit from current request immediately
+const NON_RETURN_METHODS = new Set([
+    "kong.response.exit",
+    "kong.response.error",
+])
+
 function rpcCall(rpcPipe) {
   return async (method, ...args) => {
     rpcPipe.put({
       "Method": method,
       "Args": args,
     })
+
+    if (NON_RETURN_METHODS.has(method))
+      return
+
     const [ret, err] = await rpcPipe.get()
 
     if (err) {
