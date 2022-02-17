@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 2.4.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 2.7.x, DO NOT EDIT
 // Original source path: kong/pdk/node.lua
 
 
@@ -7,13 +7,13 @@ export default interface node {
 
     /**
     * local hostname = kong.node.get_hostname()
-    * @returns The local machine hostname
+    * @returns The local machine hostname.
     */
     getHostname(): Promise<string>;
 
     /**
     * local id = kong.node.get_id()
-    * @returns The v4 UUID used by this node as its id
+    * @returns The v4 UUID used by this node as its ID.
     */
     getId(): Promise<string>;
 
@@ -66,14 +66,14 @@ export default interface node {
     * }
     * }
     * }
-    * @param unit? The unit memory should be reported in. Can be
-    either of `b/B`, `k/K`, `m/M`, or `g/G` for bytes, kibibytes, mebibytes,
+    * @param unit? The unit that memory is reported in. Can be
+    any of `b/B`, `k/K`, `m/M`, or `g/G` for bytes, kibibytes, mebibytes,
     or gibibytes, respectively. Defaults to `b` (bytes).
     * @param scale? The number of digits to the right of the decimal
     point. Defaults to 2.
     * @returns A table containing memory usage statistics for this node.
-    If `unit` is `b/B` (the default) reported values will be Lua numbers.
-    Otherwise, reported values will be a string with the unit as a suffix.
+    If `unit` is `b/B` (the default), reported values are Lua numbers.
+    Otherwise, reported values are strings with the unit as a suffix.
     */
     getMemoryStats(unit?: string, scale?: number): Promise<Array<string | number> | object>;
 
