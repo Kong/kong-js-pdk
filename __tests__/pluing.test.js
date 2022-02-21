@@ -10,6 +10,7 @@ const {
 test('plugin interface', async () => {
   let r = new Request()
   const start = Date.now() / 1000
+  await sleep(1000)
 
   r
     .useURL("http://example.com")
@@ -23,8 +24,6 @@ test('plugin interface', async () => {
     "message": "test",
   })
 
-
-  await sleep(1000)
   expect(mod.getLastStartInstanceTime()).toBeGreaterThan(start)
   expect(mod.getName()).toBe('goodbye')
   expect(mod.getPhases()).toEqual(expect.arrayContaining(['access']))
