@@ -144,9 +144,10 @@ let logFunctions = [
   "kong.log.notice", "kong.log.info", "kong.log.debug"
 ]
 
-for (let f in logFunctions) {
-  mockFunctions[f] = function(...args) {
-    console.log("Log " + f, ...args)
+for (let i = 0; i < logFunctions.length; i++) {
+  const logFunction = logFunctions[i];
+  mockFunctions[logFunction] = function(...args) {
+    console.log("Log " + logFunction, ...args)
   }
 }
 
