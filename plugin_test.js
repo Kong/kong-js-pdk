@@ -145,7 +145,7 @@ let logFunctions = [
 ]
 
 for (let i = 0; i < logFunctions.length; i++) {
-  const logFunction = logFunctions[i];
+  const logFunction = logFunctions[i]
   mockFunctions[logFunction] = function(...args) {
     console.log("Log " + logFunction, ...args)
   }
