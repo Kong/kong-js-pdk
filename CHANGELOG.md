@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="0.5.3"></a>
+## [0.5.3] - 2022-02-22
+### bug fixes
+- fix the assignment of mocked log functions ([#143](https://github.com/Kong/kong-js-pdk/issues/143)) [1b4aa12](https://github.com/Kong/kong-js-pdk/commit/1b4aa124d483b104ff783812fe50c261f4db8ce4)
+
+
 <a name="0.5.2"></a>
 ## [0.5.2] - 2022-02-17
 ### bug fixes
@@ -89,7 +95,8 @@
 - support write plugin in typescript [f63bb91](https://github.com/Kong/kong-js-pdk/commit/f63bb9182cc422f9a80c89abc59f6725dc6b426c)
 
 
-[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.5.2...HEAD
+[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.5.3...HEAD
+[0.5.3]: https://github.com/Kong/kong-js-pdk/compare/0.5.2...0.5.3
 [0.5.2]: https://github.com/Kong/kong-js-pdk/compare/0.5.1...0.5.2
 [0.5.1]: https://github.com/Kong/kong-js-pdk/compare/0.5.0...0.5.1
 [0.5.0]: https://github.com/Kong/kong-js-pdk/compare/0.4.4...0.5.0
