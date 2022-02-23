@@ -5,8 +5,10 @@ const {
   Option
 } = require('commander')
 
+const {version} = require('./package.json')
+
 const program = new Command()
-program.version('0.0.1', '--version')
+program.version(version, '--version')
 
 const logLevel = ["info", "debug"]
 
