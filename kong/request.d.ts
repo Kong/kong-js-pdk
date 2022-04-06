@@ -151,7 +151,7 @@ export default interface request {
     * kong.request.get_raw_body():gsub("Earth", "Mars") -- "Hello, Mars!"
     * @returns The plain request body.
     */
-    getRawBody(): Promise<string>;
+    getRawBody(): Promise<Uint8Array>;
 
     /**
     * -- Given a request to https://example.com/foo?msg=hello%20world&bla=&bar

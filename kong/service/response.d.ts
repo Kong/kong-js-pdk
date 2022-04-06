@@ -59,7 +59,7 @@ export default interface response {
     * local body = kong.service.response.get_raw_body()
     * @returns The raw buffered body.
     */
-    getRawBody(): Promise<string>;
+    getRawBody(): Promise<Uint8Array>;
 
     /**
     * kong.log.inspect(kong.service.response.get_status()) -- 418
