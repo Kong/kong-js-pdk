@@ -106,7 +106,7 @@ export default interface response {
     * @returns body The full body when the last chunk has been read,
     otherwise returns `nil`.
     */
-    getRawBody(): Promise<string>;
+    getRawBody(): Promise<Uint8Array>;
 
     /**
     * if kong.response.get_source() == "service" then
