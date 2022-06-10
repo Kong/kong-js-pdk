@@ -38,7 +38,7 @@ function write_error (client, msgid, error) {
 
 function errToString (err) {
   if (typeof err === 'string') return err
-  if (has(err, 'message')) return err.message
+  if ('message' in err) return err.message
   if (typeof err.toString === 'function') return err.toString()
   return ERR_UNKNOWN
 }
@@ -106,7 +106,7 @@ class Listener {
 
         let [_, msgid, method, args] = decoded
         let [ns, cmd] = method.split('.')
-        if (ns != 'plugin') {
+        if (ns !== 'plugin') {
           write_error(client, msgid, `RPC for ${ns} is not supported`)
           return
         }
