@@ -3,7 +3,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "jest": "^28.1.0"
+    "jest": "^29.0.1"
   },
   "dependencies": {
     "kong-pdk": "file:.."
