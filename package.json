@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@msgpack/msgpack": "^2.7.0",
-    "@types/node": "^16.4.1",
+    "@types/node": "^18.7.13",
     "commander": "^9.0.0",
     "node-color-log": "^9.0.0",
     "ts-node": "^10.1.0",
