@@ -60,7 +60,8 @@ class Server {
 
     const files = fs.readdirSync(this.pluginDir)
     for (const file of files) {
-
+      
+      if (files[file].startsWith('.')) continue
       if (/node_modules/.test(file)) continue
       const file_path = require.resolve(path.join(this.pluginDir, file))
       const {name, ext} = path.parse(file_path)
