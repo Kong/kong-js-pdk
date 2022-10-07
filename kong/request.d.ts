@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 2.7.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 3.1.x, DO NOT EDIT
 // Original source path: kong/pdk/request.lua
 
 
@@ -100,9 +100,9 @@ export default interface request {
     getMethod(): Promise<string>;
 
     /**
-    * -- Given a request to https://example.com:1234/v1/movies?movie=foo
-    * kong.request.get_path() -- "/v1/movies"
-    * @returns The path.
+    * -- Given a request to https://example.com/t/Abc%20123%C3%B8%2f/parent/..//test/./
+    * kong.request.get_path() -- "/t/Abc 123ø%2F/test/"
+    * @returns the path
     */
     getPath(): Promise<string>;
 
@@ -154,6 +154,13 @@ export default interface request {
     getRawBody(): Promise<Buffer>;
 
     /**
+    * -- Given a request to https://example.com/t/Abc%20123%C3%B8%2f/parent/..//test/./?movie=foo
+    * kong.request.get_raw_path() -- "/t/Abc%20123%C3%B8%2f/parent/..//test/./"
+    * @returns The path.
+    */
+    getRawPath(): Promise<string>;
+
+    /**
     * -- Given a request to https://example.com/foo?msg=hello%20world&bla=&bar
     * kong.request.get_raw_query() -- "msg=hello%20world&bla=&bar"
     * @returns The query component of the request's URL.
@@ -166,5 +173,23 @@ export default interface request {
     * @returns A string like `"http"` or `"https"`.
     */
     getScheme(): Promise<string>;
+
+    /**
+    * kong.request.get_start_time() -- 1649960273000
+    * @returns The timestamp
+    */
+    getStartTime(): Promise<number>;
+
+    /**
+    * local captures = kong.request.get_uri_captures()
+    * for idx, value in ipairs(captures.unnamed) do
+    * -- do what you want to captures
+    * end
+    * for name, value in pairs(captures.named) do
+    * -- do what you want to captures
+    * end
+    * @returns tables containing unamed and named captures.
+    */
+    getUriCaptures(): Promise<Array<string | number> | object>;
 
 }

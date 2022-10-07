@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 2.7.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 3.1.x, DO NOT EDIT
 // Original source path: kong/pdk/nginx.lua
 
 import type shared from "./shared"
@@ -13,6 +13,12 @@ export default interface nginx {
     * @returns the per-request context data in ngx.ctx
     */
     getCtx(k: string): Promise<any>;
+
+    /**
+    * local nginx_statistics = kong.nginx.get_statistics()
+    * @returns Nginx connections and requests statistics
+    */
+    getStatistics(): Promise<Array<string | number> | object>;
 
     /**
     * 
