@@ -2,6 +2,18 @@
 ## [Unreleased]
 
 
+<a name="0.5.4"></a>
+## [0.5.4] - 2022-10-07
+### bug fixes
+- ignore file starts with `.` ([#232](https://github.com/Kong/kong-js-pdk/issues/232)) [72903d5](https://github.com/Kong/kong-js-pdk/commit/72903d59c75056c48ae4e488725d08e9e9ebdfd6)
+- function signature ([#162](https://github.com/Kong/kong-js-pdk/issues/162)) [79de00f](https://github.com/Kong/kong-js-pdk/commit/79de00f36b989cdb4fe9979acc3b4be474d328b5)
+- function signature for kong/kong[#8623](https://github.com/Kong/kong-js-pdk/issues/8623) ([#161](https://github.com/Kong/kong-js-pdk/issues/161)) [2977f80](https://github.com/Kong/kong-js-pdk/commit/2977f80602db47ba743a97878141f92e14871b17)
+- use version defined in package.json ([#148](https://github.com/Kong/kong-js-pdk/issues/148)) [e9090c8](https://github.com/Kong/kong-js-pdk/commit/e9090c849ec71ba03f2c37ef43d1c2ed78b1adee)
+
+### features
+- add a reference graphQL server plugin [94b2d67](https://github.com/Kong/kong-js-pdk/commit/94b2d67bc8dda23036ca9014c5a5b924b4474792)
+
+
 <a name="0.5.3"></a>
 ## [0.5.3] - 2022-02-22
 ### bug fixes
@@ -95,7 +107,8 @@
 - support write plugin in typescript [f63bb91](https://github.com/Kong/kong-js-pdk/commit/f63bb9182cc422f9a80c89abc59f6725dc6b426c)
 
 
-[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.5.3...HEAD
+[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.5.4...HEAD
+[0.5.4]: https://github.com/Kong/kong-js-pdk/compare/0.5.3...0.5.4
 [0.5.3]: https://github.com/Kong/kong-js-pdk/compare/0.5.2...0.5.3
 [0.5.2]: https://github.com/Kong/kong-js-pdk/compare/0.5.1...0.5.2
 [0.5.1]: https://github.com/Kong/kong-js-pdk/compare/0.5.0...0.5.1
