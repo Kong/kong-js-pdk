@@ -24,7 +24,7 @@
     "@babel/preset-env": "^7.14.7",
     "jest": "^28.1.0",
     "node-fetch": "^2.6.1",
-    "uuid": "^8.3.2"
+    "uuid": "^9.0.0"
   },
   "dependencies": {
     "@msgpack/msgpack": "^2.7.0",
