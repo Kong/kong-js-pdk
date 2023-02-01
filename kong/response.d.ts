@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 3.1.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 3.2.x, DO NOT EDIT
 // Original source path: kong/pdk/response.lua
 
 
@@ -98,17 +98,6 @@ export default interface response {
     getHeaders(max_headers?: number): Promise<[ret_1: Array<string | number> | object, ret_2: string]>;
 
     /**
-    * local body = kong.response.get_raw_body()
-    * if body then
-    * body = transform(body)
-    * kong.response.set_raw_body(body)
-    * end
-    * @returns body The full body when the last chunk has been read,
-    otherwise returns `nil`.
-    */
-    getRawBody(): Promise<Buffer>;
-
-    /**
     * if kong.response.get_source() == "service" then
     * kong.log("The response comes from the Service")
     * elseif kong.response.get_source() == "error" then
@@ -151,19 +140,6 @@ export default interface response {
     * @returns throws an error on invalid input.
     */
     setHeaders(headers: Array<string | number> | object): Promise<null>;
-
-    /**
-    * kong.response.set_raw_body("Hello, world!")
-    * -- or
-    * local body = kong.response.get_raw_body()
-    * if body then
-    * body = transform(body)
-    * kong.response.set_raw_body(body)
-    * end
-    * @param body The raw body.
-    * @returns throws an error on invalid inputs.
-    */
-    setRawBody(body: Buffer): Promise<null>;
 
     /**
     * kong.response.set_status(404)
