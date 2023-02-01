@@ -2,6 +2,9 @@
 ## [Unreleased]
 
 
+<a name="0.5.5"></a>
+## [0.5.5] - 2023-02-01
+
 <a name="0.5.4"></a>
 ## [0.5.4] - 2022-10-07
 ### bug fixes
@@ -107,7 +110,8 @@
 - support write plugin in typescript [f63bb91](https://github.com/Kong/kong-js-pdk/commit/f63bb9182cc422f9a80c89abc59f6725dc6b426c)
 
 
-[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.5.4...HEAD
+[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.5.5...HEAD
+[0.5.5]: https://github.com/Kong/kong-js-pdk/compare/0.5.4...0.5.5
 [0.5.4]: https://github.com/Kong/kong-js-pdk/compare/0.5.3...0.5.4
 [0.5.3]: https://github.com/Kong/kong-js-pdk/compare/0.5.2...0.5.3
 [0.5.2]: https://github.com/Kong/kong-js-pdk/compare/0.5.1...0.5.2
