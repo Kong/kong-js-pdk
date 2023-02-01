@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 3.1.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 3.2.x, DO NOT EDIT
 // Original source path: kong/pdk/client/tls.lua
 
 
@@ -32,16 +32,25 @@ export default interface tls {
     getFullClientCertificateChain(): Promise<[ret_1: string, err: string]>;
 
     /**
-    * local res, err = kong.client.tls.request_client_certificate()
+    * local x509_lib = require "resty.openssl.x509"
+    * local chain_lib = require "resty.openssl.x509.chain"
+    * local res, err
+    * local chain = chain_lib.new()
+    * -- err check
+    * local x509, err = x509_lib.new(pem_cert, "PEM")
+    * -- err check
+    * res, err = chain:add(x509)
+    * -- err check
+    * -- `chain.ctx` is the raw data of the chain, i.e. `STACK_OF(X509) *`
+    * res, err = kong.client.tls.request_client_certificate(chain.ctx)
     * if not res then
     * -- do something with err
     * end
-    * @returns Returns `true` if request is received, or `nil` if
-    request fails.
-    * @returns Returns `nil` if the handshake is successful, or an error
-    message if it fails.
+    * @param ca_certs? The CA certificate chain opaque pointer
+    * @returns Returns `true` if successful, or `nil` if it fails.
+    * @returns Returns `nil` if successful, or an error message if it fails.
     */
-    requestClientCertificate(): Promise<[ret_1: boolean, err: string]>;
+    requestClientCertificate(ca_certs?: cdata): Promise<[ret_1: boolean, err: string]>;
 
     /**
     * kong.client.tls.set_client_verify("FAILED:unknown CA")
