@@ -28,10 +28,10 @@ export default interface jwe {
     * @param enc Encryption algorithm used for content encryption
     * @param key Public key
     * @param plaintext Plaintext
-    * @param options Options (optional), default: nil
+    * @param options? Options (optional), default: nil
     * @returns JWE encrypted JWT token, or nil
     * @returns Error message, or nil
     */
-    encrypt(alg: string, enc: string, key: any, plaintext: string, options: ?table): Promise<[ret_1: string, ret_2: string]>;
+    encrypt(alg: string, enc: string, key: any, plaintext: string, options?: Array<string | number> | object): Promise<[ret_1: string, ret_2: string]>;
 
 }
