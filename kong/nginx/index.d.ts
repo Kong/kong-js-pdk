@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 3.2.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 3.4.x, DO NOT EDIT
 // Original source path: kong/pdk/nginx.lua
 
 import type shared from "./shared"
@@ -34,7 +34,7 @@ export default interface nginx {
 
     /**
     * 
-    * @returns the NGINX version string
+    * @returns get NGINX variable value
     */
     getVar(): Promise<string>;
 

@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 3.2.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 3.4.x, DO NOT EDIT
 // Original source path: kong/pdk/service/response.lua
 
 
@@ -12,7 +12,7 @@ export default interface response {
     * @param mimetype? The MIME type of the response (if known).
     * @param max_args? Sets a limit on the maximum number of (what?)
     that can be parsed.
-    * @returns The raw buffered body
+    * @returns The decoded buffered body
     */
     getBody(mimetype?: string, max_args?: number): Promise<string>;
 

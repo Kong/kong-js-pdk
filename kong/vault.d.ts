@@ -1,9 +1,14 @@
-// AUTO GENERATED BASED ON Kong 3.2.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 3.4.x, DO NOT EDIT
 // Original source path: kong/pdk/vault.lua
 
 
 export default interface vault {
 
+
+    /**
+    * kong.vault.flush()
+    */
+    flush(): Promise<null>;
 
     /**
     * local value, err = kong.vault.get("{vault://env/cert/key}")
@@ -28,5 +33,37 @@ export default interface vault {
     * @returns error message on failure, otherwise `nil`
     */
     parseReference(reference: string): Promise<[ret_1: Array<string | number> | object, ret_2: string]>;
+
+    /**
+    * local options = kong.vault.update({
+    * cert = "-----BEGIN CERTIFICATE-----...",
+    * key = "-----BEGIN RSA PRIVATE KEY-----...",
+    * cert_alt = "-----BEGIN CERTIFICATE-----...",
+    * key_alt = "-----BEGIN EC PRIVATE KEY-----...",
+    * ["$refs"] = {
+    * cert = "{vault://aws/cert}",
+    * key = "{vault://aws/key}",
+    * cert_alt = "{vault://aws/cert-alt}",
+    * key_alt = "{vault://aws/key-alt}",
+    * }
+    * })
+    * -- or
+    * local options = {
+    * cert = "-----BEGIN CERTIFICATE-----...",
+    * key = "-----BEGIN RSA PRIVATE KEY-----...",
+    * cert_alt = "-----BEGIN CERTIFICATE-----...",
+    * key_alt = "-----BEGIN EC PRIVATE KEY-----...",
+    * ["$refs"] = {
+    * cert = "{vault://aws/cert}",
+    * key = "{vault://aws/key}",
+    * cert_alt = "{vault://aws/cert-alt}",
+    * key_alt = "{vault://aws/key-alt}",
+    * }
+    * }
+    * kong.vault.update(options)
+    * @param options options containing secrets and references (this function modifies the input options)
+    * @returns options with updated secret values
+    */
+    update(options: Array<string | number> | object): Promise<Array<string | number> | object>;
 
 }
