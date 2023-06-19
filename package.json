@@ -29,7 +29,7 @@
   "dependencies": {
     "@msgpack/msgpack": "^2.7.0",
     "@types/node": "^18.11.9",
-    "commander": "^10.0.0",
+    "commander": "^11.0.0",
     "node-color-log": "^10.0.2",
     "ts-node": "^10.1.0",
     "typescript": "^4.2.4"
