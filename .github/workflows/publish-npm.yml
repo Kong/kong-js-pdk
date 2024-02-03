@@ -5,6 +5,7 @@ on:
       - master # Change this to your default branch
 jobs:
   npm-publish:
+    timeout-minutes: ${{ fromJSON(vars.GHA_DEFAULT_TIMEOUT) }}
     name: npm-publish
     runs-on: ubuntu-latest
     steps:
