@@ -10,7 +10,8 @@ on:
     branches: [ master ]
 
 jobs:
-  build: 
+  build:
+    timeout-minutes: ${{ fromJSON(vars.GHA_DEFAULT_TIMEOUT) }} 
     runs-on: ubuntu-latest 
     strategy:
       matrix:
