@@ -1,6 +1,6 @@
 {
   "name": "kong-pdk",
-  "version": "0.5.5",
+  "version": "0.6.0",
   "description": "Kong PDK for Javascript and Plugin Server",
   "main": "app.js",
   "scripts": {

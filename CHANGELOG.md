@@ -2,11 +2,17 @@
 ## [Unreleased]
 
 
+<a name="0.6.0"></a>
+## [0.6.0] - 2024-10-10
+### bug fixes
+- incorrect doc ([#316](https://github.com/Kong/kong-js-pdk/issues/316)) [ebc91ba](https://github.com/Kong/kong-js-pdk/commit/ebc91ba775bbc28ca81c284f41a5f96eacf130a3)
+
+
 <a name="0.5.5"></a>
-## [0.5.5] - 2023-02-01
+## [0.5.5] - 2023-02-15
 
 <a name="0.5.4"></a>
-## [0.5.4] - 2022-10-07
+## [0.5.4] - 2022-11-08
 ### bug fixes
 - ignore file starts with `.` ([#232](https://github.com/Kong/kong-js-pdk/issues/232)) [72903d5](https://github.com/Kong/kong-js-pdk/commit/72903d59c75056c48ae4e488725d08e9e9ebdfd6)
 - function signature ([#162](https://github.com/Kong/kong-js-pdk/issues/162)) [79de00f](https://github.com/Kong/kong-js-pdk/commit/79de00f36b989cdb4fe9979acc3b4be474d328b5)
@@ -68,9 +74,6 @@
 - adds Version as named property in GetPluginInfo function in GetPluginInfo function([#20](https://github.com/Kong/kong-js-pdk/issues/20)) [383e44e](https://github.com/Kong/kong-js-pdk/commit/383e44e50ade0a74b390a0a822659591280dae3a)
 
 
-<a name="0.3.5"></a>
-## [0.3.5] - 2021-06-24
-
 <a name="0.3.4"></a>
 ## [0.3.4] - 2021-06-15
 ### bug fixes
@@ -110,7 +113,8 @@
 - support write plugin in typescript [f63bb91](https://github.com/Kong/kong-js-pdk/commit/f63bb9182cc422f9a80c89abc59f6725dc6b426c)
 
 
-[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.5.5...HEAD
+[Unreleased]: https://github.com/Kong/kong-js-pdk/compare/0.6.0...HEAD
+[0.6.0]: https://github.com/Kong/kong-js-pdk/compare/0.5.5...0.6.0
 [0.5.5]: https://github.com/Kong/kong-js-pdk/compare/0.5.4...0.5.5
 [0.5.4]: https://github.com/Kong/kong-js-pdk/compare/0.5.3...0.5.4
 [0.5.3]: https://github.com/Kong/kong-js-pdk/compare/0.5.2...0.5.3
@@ -120,8 +124,7 @@
 [0.4.4]: https://github.com/Kong/kong-js-pdk/compare/0.4.3...0.4.4
 [0.4.3]: https://github.com/Kong/kong-js-pdk/compare/0.4.2...0.4.3
 [0.4.2]: https://github.com/Kong/kong-js-pdk/compare/0.4.0...0.4.2
-[0.4.0]: https://github.com/Kong/kong-js-pdk/compare/0.3.5...0.4.0
-[0.3.5]: https://github.com/Kong/kong-js-pdk/compare/0.3.4...0.3.5
+[0.4.0]: https://github.com/Kong/kong-js-pdk/compare/0.3.4...0.4.0
 [0.3.4]: https://github.com/Kong/kong-js-pdk/compare/0.3.3...0.3.4
 [0.3.3]: https://github.com/Kong/kong-js-pdk/compare/0.3.2...0.3.3
 [0.3.2]: https://github.com/Kong/kong-js-pdk/compare/0.3.1...0.3.2
