@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 3.4.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 3.8.x, DO NOT EDIT
 // Original source path: kong/pdk/response.lua
 
 
@@ -9,10 +9,10 @@ export default interface response {
     * kong.response.add_header("Cache-Control", "no-cache")
     * kong.response.add_header("Cache-Control", "no-store")
     * @param name The header name.
-    * @param value The header value.
+    * @param of strings|string|number|boolean value The header value.
     * @returns throws an error on invalid input.
     */
-    addHeader(name: string, value: any): Promise<null>;
+    addHeader(name: string, of: array): Promise<null>;
 
     /**
     * kong.response.set_header("X-Foo", "foo")
@@ -119,10 +119,10 @@ export default interface response {
     /**
     * kong.response.set_header("X-Foo", "value")
     * @param name The name of the header
-    * @param value The new value for the header.
+    * @param of strings|string|number|boolean value The new value for the header.
     * @returns throws an error on invalid input.
     */
-    setHeader(name: string, value: any): Promise<null>;
+    setHeader(name: string, of: array): Promise<null>;
 
     /**
     * kong.response.set_headers({

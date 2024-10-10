@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 3.4.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 3.8.x, DO NOT EDIT
 // Original source path: kong/pdk/client/tls.lua
 
 
@@ -16,7 +16,7 @@ export default interface tls {
     disableSessionReuse(): Promise<[ret_1: boolean, err: string]>;
 
     /**
-    * local cert, err = kong.client.get_full_client_certificate_chain()
+    * local cert, err = kong.client.tls.get_full_client_certificate_chain()
     * if err then
     * -- do something with err
     * end

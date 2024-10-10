@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 3.4.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 3.8.x, DO NOT EDIT
 // Original source path: kong/pdk.lua
 
 import type client from "./client"
@@ -14,6 +14,7 @@ import type request from "./request"
 import type response from "./response"
 import type router from "./router"
 import type service from "./service"
+import type telemetry from "./telemetry"
 import type vault from "./vault"
 
 export default interface kong {
@@ -31,6 +32,7 @@ export default interface kong {
     response: response;
     router: router;
     service: service;
+    telemetry: telemetry;
     vault: vault;
 
 }

@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 3.4.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 3.8.x, DO NOT EDIT
 // Original source path: kong/pdk/service/response.lua
 
 
@@ -45,6 +45,8 @@ export default interface response {
     * kong.log.inspect(headers.x_another[1])    -- "foo bar"
     * kong.log.inspect(headers["X-Another"][2]) -- "baz"
     * end
+    * Note that this function returns a proxy table
+    * which cannot be iterated with `pairs` or used as operand of `#`.
     * @param max_headers? Sets a limit on the maximum number of
     headers that can be parsed.
     * @returns The response headers in table form.

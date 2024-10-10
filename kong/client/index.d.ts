@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 3.4.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 3.8.x, DO NOT EDIT
 // Original source path: kong/pdk/client.lua
 
 import type tls from "./tls"
@@ -18,6 +18,14 @@ export default interface client {
     authenticate(consumer: Array<string | number> | object, credential: Array<string | number> | object): Promise<null>;
 
     /**
+    * -- assuming `consumer_id` is provided by some code
+    * kong.client.authenticate_consumer_group_by_consumer_id(consumer_id)
+    * @param consumer_id The consumer id to use for setting the consumer group.
+    If no value is provided, the current consumer group is not changed.
+    */
+    authenticateConsumerGroupByConsumerId(consumer_id: string): Promise<null>;
+
+    /**
     * local consumer = kong.client.get_consumer()
     * if consumer then
     * consumer_id = consumer.id
@@ -28,6 +36,20 @@ export default interface client {
     * @returns The authenticated consumer entity.
     */
     getConsumer(): Promise<Array<string | number> | object>;
+
+    /**
+    * local group = kong.client.get_consumer_group()
+    * @returns The authenticated consumer group. Returns `nil` if no
+    consumer group has been authenticated for the current request.
+    */
+    getConsumerGroup(): Promise<Array<string | number> | object>;
+
+    /**
+    * local groups = kong.client.get_consumer_groups()
+    * @returns The authenticated consumer groups. Returns `nil` if no
+    consumer groups has been authenticated for the current request.
+    */
+    getConsumerGroups(): Promise<Array<string | number> | object>;
 
     /**
     * local credential = kong.client.get_credential()
@@ -98,5 +120,32 @@ export default interface client {
     * @returns `nil` if successful, or an error message if it fails.
     */
     loadConsumer(consumer_id: string, search_by_username?: boolean): Promise<[ret_1: Array<string | number> | object, err: string]>;
+
+    /**
+    * -- assuming `group` is provided by some code
+    * kong.client.set_authenticated_consumer_group(group)
+    * @param group The consumer group to set. If no
+    value is provided, then any existing value will be cleared.
+    this value should be a table with metadata of the group like its `id` and `name`.
+    */
+    setAuthenticatedConsumerGroup(group: Array<string | number> | object): Promise<null>;
+
+    /**
+    * kong.client.set_authenticated_consumer_groups({
+    * {
+    * id = "fed2bf38-10c4-404e-8d45-a2b0f521464d",
+    * name = "my-group",
+    * },
+    * {
+    * id = "736bb9d9-98f2-46d5-97fc-d7361d9488ee",
+    * name = "my-other-group",
+    * }
+    * })
+    * @param groups The consumer groups to set. If no
+    value is provided, then any existing value will be cleared.
+    This value should be a sequence-like table of tables, with each item
+    having at least an `id` and a `name`.
+    */
+    setAuthenticatedConsumerGroups(groups: Array<string | number> | object): Promise<null>;
 
 }

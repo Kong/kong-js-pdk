@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 3.4.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 3.8.x, DO NOT EDIT
 // Original source path: kong/pdk/service.lua
 
 import type request from "./request"
@@ -10,12 +10,32 @@ export default interface service {
     response: response;
 
     /**
+    * kong.service.set_retries(233)
+    * @param retries 
+    */
+    setRetries(retries: number): Promise<null>;
+
+    /**
     * kong.service.set_target("service.local", 443)
     * kong.service.set_target("192.168.130.1", 80)
     * @param host 
     * @param port 
     */
     setTarget(host: string, port: number): Promise<null>;
+
+    /**
+    * kong.service.set_target_retry_callback(function() return "service.local", 443 end)
+    * @param retry_callback 
+    */
+    setTargetRetryCallback(retry_callback: function): Promise<null>;
+
+    /**
+    * kong.service.set_timeouts(233, 233, 233)
+    * @param connect_timeout 
+    * @param write_timeout 
+    * @param read_timeout 
+    */
+    setTimeouts(connect_timeout: number, write_timeout: number, read_timeout: number): Promise<null>;
 
     /**
     * local ok, err = kong.service.set_tls_verify(true)

@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 3.4.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 3.8.x, DO NOT EDIT
 // Original source path: kong/pdk/request.lua
 
 
@@ -11,12 +11,13 @@ export default interface request {
     * body.age  -- "42"
     * @param mimetype? The MIME type.
     * @param max_args? Sets a limit on the maximum number of parsed
+    * @param max_allowed_file_size? the max allowed file size to be read from
     arguments.
     * @returns A table representation of the body.
     * @returns An error message.
     * @returns mimetype The MIME type used.
     */
-    getBody(mimetype?: string, max_args?: number): Promise<[ret_1: Array<string | number> | object, ret_2: string, ret_3: string]>;
+    getBody(mimetype?: string, max_args?: number, max_allowed_file_size?: number): Promise<[ret_1: Array<string | number> | object, ret_2: string, ret_3: string]>;
 
     /**
     * kong.request.get_forwarded_host() -- "example.com"
@@ -149,9 +150,11 @@ export default interface request {
     /**
     * -- Given a body with payload "Hello, Earth!":
     * kong.request.get_raw_body():gsub("Earth", "Mars") -- "Hello, Mars!"
-    * @returns The plain request body.
+    * @returns The plain request body or nil if it does not fit into
+    the NGINX temporary buffer.
+    * @returns An error message.
     */
-    getRawBody(): Promise<Buffer>;
+    getRawBody(): Promise<[ret_1: Buffer, ret_2: string]>;
 
     /**
     * -- Given a request to https://example.com/t/Abc%20123%C3%B8%2f/parent/..//test/./?movie=foo

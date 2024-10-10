@@ -1,4 +1,4 @@
-// AUTO GENERATED BASED ON Kong 3.4.x, DO NOT EDIT
+// AUTO GENERATED BASED ON Kong 3.8.x, DO NOT EDIT
 // Original source path: kong/pdk/vault.lua
 
 
@@ -17,6 +17,11 @@ export default interface vault {
     * @returns error message on failure, otherwise `nil`
     */
     get(reference: string): Promise<[ret_1: string, ret_2: string]>;
+
+    /**
+    * 
+    */
+    initWorker(): Promise<null>;
 
     /**
     * kong.vault.is_reference("{vault://env/key}") -- true
@@ -65,5 +70,10 @@ export default interface vault {
     * @returns options with updated secret values
     */
     update(options: Array<string | number> | object): Promise<Array<string | number> | object>;
+
+    /**
+    * 
+    */
+    warmup(): Promise<null>;
 
 }
